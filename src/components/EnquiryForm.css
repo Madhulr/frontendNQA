@@ -1,0 +1,103 @@
+.root {
+    --sidebar-open-width: 255px;
+    --sidebar-closed-width: 90px;
+    
+  }
+  
+  .enquiry-page {
+    display: flex;
+    flex-direction: column;
+    margin-left: 260px;   
+    flex: 1;
+  }
+  
+  .title-container {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    /* margin-left: 300px;  */
+  }
+  
+  .enquiry-form-container {
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+    flex: 1;
+  }
+  
+  .enquiry-form-container.with-sidebar {
+    margin-left: var(--sidebar-open-width);
+  }
+  
+  .enquiry-form-container.without-sidebar {
+    margin-left: var(--sidebar-closed-width);
+  }
+  
+  @media (max-width: 768px) {
+    .enquiry-form-container.with-sidebar,
+    .enquiry-form-container.without-sidebar {
+      margin-left: 0;
+    }
+  }
+  
+  .enquiry-form {
+    animation: fadeIn 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: opacity 0.3s ease;
+  }
+  
+  .form-container {
+    padding: 15px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    transition: justify-content 0.3s ease;
+  }
+  
+  input, .MuiFormControlLabel-root {
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .enquiry-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .enquiry-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3f51b5;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

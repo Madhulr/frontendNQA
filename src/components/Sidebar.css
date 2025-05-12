@@ -1,0 +1,143 @@
+.sidebar {
+  width: 255px;
+  height: 100vh;
+  background: #ffffff;
+  color: rgb(14, 6, 162);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  transition: width 0.3s;
+  box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 0 10px;
+  gap: 5px;
+  position: relative;
+}
+
+.logo {
+  width: 180px;
+  transition: width 0.3s;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 30px;
+  background: none;
+  border: none;
+  color: rgb(20, 1, 184);
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin: 0;
+  transition: left 0.3s;
+}
+
+/* Disable hover effect */
+.toggle-btn:hover {
+  background: none;
+  color: rgb(20, 1, 184);
+  border: none;
+  box-shadow: none;
+}
+
+
+.sidebar.open .toggle-btn {
+  left: 155px;
+}
+
+.sidebar.closed .toggle-btn {
+  left: 20px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 100px;
+}
+
+.sidebar-menu li {
+  padding: 10px 45px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  
+}
+
+.sidebar-menu li.active {
+  background-color: blue;
+  color: white;
+  border-radius: 3%;
+}
+
+.sidebar-menu li.active a {
+  color: white;
+}
+
+.sidebar-menu li.active::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: yellow;
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+}
+
+.sidebar-menu li a {
+  color: rgb(15, 11, 220);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 120%;
+  margin-top: 0px;
+}
+
+.sidebar-menu li svg {
+  font-size: 1.2rem;  /* increased icon size */
+}
+
+.sidebar-footer {
+  padding: 15px;
+  text-align: center;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: rgb(0, 3, 203);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.sidebar.closed {
+  width: 90px;
+}
+
+.sidebar.closed .logo {
+  width: 60px;
+  height: auto;
+}
+.sidebar.closed .sidebar-menu li {
+  padding: 10px 20px;
+  justify-content: center;
+  border-radius: 30%;
+
+}
+
+.sidebar.closed .sidebar-menu li a {
+  font-size: 0; /* hide text */
+  gap: 0; /* remove gap between icon and text */
+}
+
+.sidebar.closed .sidebar-menu li svg {
+  font-size: 1.8rem; /* enlarge icon when closed */
+}
+

@@ -1,24 +1,72 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import ForgotPassword from './components/ForgotPassword';
+import StudentEnquiryForm from './components/EnquiryForm';
+import EnquiryList from './components/EnquiryList';
+import DemoList from './components/DemoList';
+import WithSidebar from './components/WithSidebar';
 import './App.css';
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Public routes */}
+        <Route path="/" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+
+        {/* Sidebar-wrapped routes */}
+        <Route
+          path="/enquiry-form"
+          element={
+            <WithSidebar
+              Component={StudentEnquiryForm}
+              isSidebarOpen={isSidebarOpen}
+              toggleSidebar={toggleSidebar}
+            />
+          }
+        />
+        <Route
+          path="/enquiry-list"
+          element={
+            <WithSidebar
+              Component={EnquiryList}
+              isSidebarOpen={isSidebarOpen}
+              toggleSidebar={toggleSidebar}
+            />
+          }
+        />
+        <Route
+          path="/demo-list"
+          element={
+            <WithSidebar
+              Component={DemoList}
+              isSidebarOpen={isSidebarOpen}
+              toggleSidebar={toggleSidebar}
+            />
+          }
+        />
+
+        {/* Optional 404 fallback */}
+        {/*
+        <Route
+          path="*"
+          element={
+            <div className="flex items-center justify-center h-screen bg-gray-100 text-xl text-red-500 font-semibold">
+              404 - Page Not Found
+            </div>
+          }
+        />
+        */}
+      </Routes>
+    </Router>
   );
 }
 
